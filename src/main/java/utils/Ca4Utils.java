@@ -61,4 +61,69 @@ public class Ca4Utils {
         }
         return ordered;
     }
+    public int[] partition(int[] data, int pivot) {
+        if (data == null) {
+            throw new IllegalArgumentException("data cannot be null");
+        }
+
+        /*
+        * Partitioning separates data into a smaller sublist of elements in a specified size
+
+        //SETUP:
+        * Create variable leftCount to count elements placed on the left partition
+        * Create variable rightCount to count elements placed on the right partition
+        * Create variable pivot to determine whether element goes to left or right partition
+
+        * //LOGIC:
+        For every value in data:
+            if value is less or equal to the pivot:
+            Increase leftCount by 1
+          else
+          * Increase right count by 1
+        * */
+        int leftCount = 0;
+        int rightCount = 0;
+
+        for (int value : data) {
+            if (value <= pivot) {
+                leftCount++;
+            } else {
+                rightCount++;
+            }
+        }
+
+        /*
+        //SETUP:
+        * Create array left to place data on the left
+        * Create variable leftTracker to track elements on the left
+        * Create array right to place data on the right
+        * Create variable rightTracker to track elements on the right
+        */
+        int[] left = new int[leftCount];
+        int leftTracker = 0;
+        int[] right = new int[rightCount];
+        int rightTracker = 0;
+
+        /*
+        //LOGIC:
+        * for every value in data:
+            if value is less or equal to the pivot:
+            assign left of leftTracker to value
+            Increase leftTracker by 1
+           else
+             assign right of rightTracker to value
+             Increase rightTracker by 1
+             */
+        for (int value : data) {
+            if (value <= pivot) {
+                left[leftTracker] = value;
+                leftTracker++;
+            } else {
+                right[rightTracker] = value;
+                rightTracker++;
+            }
+        }
+        int[] partitioned = merge(left, right);
+        return partitioned;
+    }
 }
