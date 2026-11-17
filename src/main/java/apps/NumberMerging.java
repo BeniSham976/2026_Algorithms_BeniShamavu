@@ -1,6 +1,5 @@
 package apps;
 
-import java.util.Arrays;
 import java.util.Scanner;
 import utils.*;
 

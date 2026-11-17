@@ -61,7 +61,8 @@ public class Ca4Utils {
         }
         return ordered;
     }
-    public int[] partition(int[] data, int pivot) {
+
+    public static int[] partition(int[] data, int pivot) {
         if (data == null) {
             throw new IllegalArgumentException("data cannot be null");
         }
